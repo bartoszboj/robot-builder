@@ -2,7 +2,7 @@
   <div class="wrapper">
     <button class="add-to-cart" @click="addToCart()">Add to Cart</button>
     <div class="top-row">
-      <div class="top part">
+      <div :class="['top', 'part', {'sale-border' : isOnSale(selectedRobot.head) }]">
         <div class="robot-name">
           {{ selectedRobot.head.title }}
           <span class="sale" v-if="selectedRobot.head.onSale">Sale!!!</span>
@@ -74,6 +74,7 @@
 
 <script>
 import availableParts from "@/components/data/parts";
+import createdHookMixin from "./created-hook-mixin.js"
 
 const nextValidIndex = function(index, length) {
   return index === length - 1 ? 0 : index + 1;
@@ -83,6 +84,7 @@ const previousValidIndex = function(index, length) {
 };
 export default {
   name: "RobotBuilder",
+  mixins: [createdHookMixin],
   data() {
     return {
       cart: [],
@@ -106,6 +108,9 @@ export default {
     },
   },
   methods: {
+    isOnSale(item) {
+      return item.onSale
+    },
     addToCart() {
       const robot = this.selectedRobot;
       let totalCost = 0;
@@ -292,5 +297,16 @@ export default {
     width: 200px;
     padding: 5px 10px;
     font-size: 16px;
+  }
+  td, th {
+    padding: 5px;
+    padding-right: 20px;
+    text-align: left;
+  }
+  .cost{
+    text-align: right;
+  }
+  .sale-border{
+    border: 3px solid red;
   }
 </style>
