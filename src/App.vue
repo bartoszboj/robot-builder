@@ -32,24 +32,31 @@ export default {
 <style lang="scss">
   @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
+  *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
   body{
     font-family: 'Roboto', sans-serif;
     background: linear-gradient(to bottom, #555, #999);
     background-attachment: fixed;
+    user-select: none;
   }
 
   main {
     margin: 0 auto;
     padding: 30px;
     background-color: white;
-    width: 1024px;
+    max-width: 1280px;
     min-height: 300px;
   }
 
   header {
     background-color: #999;
-    width: 1084px;
+    max-width: 1280px;
     margin: 0 auto;
+    padding: 10px;
 
     span{
       margin-left: 10px;
@@ -68,10 +75,7 @@ export default {
     .ul {
       padding: 3px;
       display: flex;
-      margin: 0;
+      padding-inline-start: 0;
     }
   }
-
-
-  
 </style>

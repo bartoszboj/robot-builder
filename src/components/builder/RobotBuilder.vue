@@ -2,7 +2,7 @@
   <div>
     <div class="top-row">
       <div class="top part">
-        <img :src="availableParts.heads[headIndex].src" title="head" />
+        <img :src="selectedRobot.head" title="head" />
         <button @click="selectPreviousHead()" class="prev-selector">
           &#9668;
         </button>
@@ -11,7 +11,7 @@
     </div>
     <div class="middle-row">
       <div class="left part">
-        <img :src="availableParts.arms[0].src" title="left arm" />
+        <img :src="selectedRobot.leftArm" title="left arm" />
         <button @click="selectPreviousLeftArm()" class="prev-selector">
           &#9650;
         </button>
@@ -20,7 +20,7 @@
         </button>
       </div>
       <div class="center part">
-        <img :src="availableParts.torsos[0].src" title="torso" />
+        <img :src="selectedRobot.torso" title="torso" />
         <button @click="selectPreviousTorso()" class="prev-selector">
           &#9668;
         </button>
@@ -29,7 +29,7 @@
         </button>
       </div>
       <div class="right part">
-        <img :src="availableParts.arms[0].src" title="right arm" />
+        <img :src="selectedRobot.rightArm" title="right arm" />
         <button @click="selectPreviousRightArm()" class="prev-selector">
           &#9650;
         </button>
@@ -40,7 +40,7 @@
     </div>
     <div class="bottom-row">
       <div class="bottom part">
-        <img :src="availableParts.bases[0].src" title="base" />
+        <img :src="selectedRobot.base" title="base" />
 
         <button @click="selectPreviousBase()" class="prev-selector">
           &#9668;
@@ -73,6 +73,15 @@ export default {
     };
   },
   computed: {
+    selectedRobot(){
+      return{
+        head: availableParts.heads[this.headIndex].src,
+        leftArm: availableParts.arms[this.leftArmIndex].src,
+        torso: availableParts.torsos[this.torsoIndex].src,
+        rightArm: availableParts.arms[this.rightArmIndex].src,
+        base: availableParts.bases[this.baseIndex].src
+      }
+    },
     headsImg() {
       const headsImg = this.availableParts.heads.map((head) => {
         return head.src;
